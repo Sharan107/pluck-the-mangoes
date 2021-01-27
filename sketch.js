@@ -5,6 +5,7 @@ const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Render = Matter.Render;
 const Constraint=Matter.Constraint;
+
 var treeObj, stoneObj,groundObject, launcherObject;
 var mango1;
 var world,boy;
@@ -32,7 +33,8 @@ function setup() {
 	
 	treeObj=new tree(1050,580);
 	groundObject=new ground(width/2,600,width,20);
-    rock = new Stone(200,400,20);
+  rock = new Stone(240,415,20);
+  rope= new Attachment(rock.body,{x:240,y:415});
 	
 	
 	Engine.run(engine);
@@ -59,6 +61,45 @@ function draw() {
   mango10.display();
   mango11.display();
   rock.display();
+  rope.display();
+
+  detectCollision(rock,mango1)
+  detectCollision(rock,mango2)
+  detectCollision(rock,mango3)
+  detectCollision(rock,mango4)
+  detectCollision(rock,mango5)
+  detectCollision(rock,mango6)
+  detectCollision(rock,mango7)
+  detectCollision(rock,mango8)
+  detectCollision(rock,mango9)
+  detectCollision(rock,mango10)
+  detectCollision(rock,mango11)
 
   groundObject.display();
+}
+
+function mouseDragged(){
+   Body.setPosition(rock.body,{x:mouseX,y:mouseY})
+}
+
+function mouseReleased(){
+  rope.fly();
+}
+
+function detectCollision(stone,mango){
+stonepos=stone.body.position;
+mangopos=mango.body.position;
+
+var distance=dist(stonepos.x,stonepos.y,mangopos.x,mangopos.y);
+
+if(distance<=mango.r+stone.r){
+  Body.setStatic(mango.body,false);
+}
+}
+
+function keyPressed(){
+  if (keycode===32){
+    Body.setPosition(rock.body,{x:240,y:415});
+    rope.attach(rock.body);
+  }
 }
