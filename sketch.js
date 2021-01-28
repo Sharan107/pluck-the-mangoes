@@ -33,7 +33,7 @@ function setup() {
 	
 	treeObj=new tree(1050,580);
 	groundObject=new ground(width/2,600,width,20);
-  rock = new Stone(240,415,20);
+  rock = new Stone(240,415,40);
   rope= new Attachment(rock.body,{x:240,y:415});
 	
 	
@@ -75,6 +75,7 @@ function draw() {
   detectCollision(rock,mango10)
   detectCollision(rock,mango11)
 
+
   groundObject.display();
 }
 
@@ -100,6 +101,6 @@ if(distance<=mango.r+stone.r){
 function keyPressed(){
   if (keycode===32){
     Body.setPosition(rock.body,{x:240,y:415});
-    rope.attach(rock.body);
+    rope.attach(rock.body,{x:240});
   }
 }

@@ -4,8 +4,8 @@ constructor(x,y,r){
 
 var options={
   isStatic:false,
-  restitution:0,
-  friction:1,
+  restitution:0.5,
+  friction:0.5,
   density:1.2
 }
 
