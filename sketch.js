@@ -99,8 +99,8 @@ if(distance<=mango.r+stone.r){
 }
 
 function keyPressed(){
-  if (keycode===32){
+  if (keyCode===32){
     Body.setPosition(rock.body,{x:240,y:415});
-    rope.attach(rock.body,{x:240});
+    rope.attach(rock.body);
   }
 }

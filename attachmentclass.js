@@ -16,7 +16,7 @@ class Attachment{
         this.rope.bodyA = null;
     }
 
-    attach(){
+    attach(bodyA){
         this.rope.bodyA = bodyA;
     }
 
